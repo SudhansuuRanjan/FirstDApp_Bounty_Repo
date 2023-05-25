@@ -121,3 +121,51 @@ Modiers used in the Function Review Quest :
         _;
     }
 ```
+
+## Working of the features
+
+- First we compile and deploy the smart contract in Remix IDE.
+
+- **Checking the Quest Time Limit Feature**
+  #### We create a new quest by calling the function `createQuest` and passing the required parameters.
+  * title : `NextJs 13`
+  * reward : `12`
+  * numberOfRewards : `10`
+  * startTime : `1685012333` (Thursday, 25 May 2023 10:58:53 AM)
+  * endTime : `1685023133` (Thursday, 25 May 2023 1:58:53 PM)
+
+
+
+  #### We join the quest by calling the function `joinQuest` and passing the required parameters.
+
+  ![Newly Created Quest](https://i.ibb.co/Pgs2Swc/1.png "Newly Created Quest")
+    
+  2. We then switch to a different account and try to join the quest before the start time and after the end time and we get the following error message.
+
+  ![Error Message](https://i.ibb.co/92DXPxH/2.png "Error Message")
+
+- **Checking the functionality to Review Quests**
+
+  #### We create a new quest by calling the function `createQuest` and passing the required parameters.
+  * title : `NextJs 13`
+  * reward : `12`
+  * numberOfRewards : `10`
+  * startTime : `1685023133` (Thursday, 25 May 2023 1:58:53 PM)
+  * endTime : `1685037533` (Thursday, 25 May 2023 5:58:53 PM)
+
+
+  #### We join the quest by calling the function `joinQuest` and passing the required parameters.
+
+  1. We then switch to different account and join the quest by calling the function `joinQuest` and passing the required questId `0`.
+
+  ![Newly Created Quest](https://i.ibb.co/J2Fn9pg/3.png "Newly Created Quest")
+  2. Calling Join quest from another acccount.
+  ![Join Quest](https://i.ibb.co/JHL7634/4.png "Join Created Quest")
+  3. Checking Quest status after joining.
+  ![Check Quest Status](https://i.ibb.co/47DXDF4/5.png "Check Quest Status")
+  4. Switching to the admin account and reviewing the quest submition of the user. It failed because the user an not yet submitted the quest.
+  ![Quest Review Failed](https://i.ibb.co/QmgkYJB/6.png "Quest Review Failed")
+  5. Switching to the user account and submitting the quest. And then observe the playerQuestStatus and questReviewStatus which are `2(Submitted)` and `0(Reviewing)`.
+  ![Checking Quest Status](https://i.ibb.co/y6Px0hH/7.png "Checking Quest Status")
+  6. Switching to the admin account and reviewing the quest submition of the user. We mark the quest submition as rewarded and then observe the questReviewStatus and No of Rewards left in Quest which are `2(Rewarded)` and `9` since the user is rewarded so rewards left is decrease by 1.
+  ![Quest Review Success](https://i.ibb.co/VHgXkX8/8.png "Quest Review Success")
