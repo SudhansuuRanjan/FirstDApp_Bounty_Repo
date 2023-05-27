@@ -2,14 +2,14 @@
 
 ## Introduction
 
-This DApp is a simple clone of StackUp, in which admin can create a quest and users have to first join the quest then they can submit their answers. If the answer is correct then they will be rewarded.
+This DApp is a simple clone of StackUp, in which admin can create a quest and users have to first join the quest then they can submit their answers. If the answer is correct and rewards are available then they will be rewarded.
 
 ## Which features I am trying to add and why?
 
 1. **Quests can be created with a time limit.** This feature is added to make the DApp more realistic. In StackUp, there are time limits for every quest.
-As feature will help to prevent the users from joining the quest before and after the set time limit since we are rewarding the users and there may be 2000+ submitions so we will need a lot of workforce to review the quests and we cannot reward a quest for the lifetime since answers will be out and everyone will be just randomly submitting for rewards.
+As this feature will help to prevent the users from joining the quest before and after the set time limit since we are rewarding the users and there may be 2000+ submissions so we will need a lot of workforce to review the quests and we cannot reward a quest for the lifetime since answers will be out and everyone will be just randomly submitting for rewards.
 
-2. **Added a functionality to Review Quests** This feature is added to make the DApp more realistic. As in StackUp, there are admins who review the quest submitions of the users and mark them as rewarded or rejected or approved. There is no purpose of bringing quests if we(admin) cannot review the submitions of the users and reward them. So, I picked this feature.
+2. **Added a functionality to Review Quests** This feature is added to make the DApp more realistic. As in StackUp, there are admins who review the quest submissions of the users and mark them as rewarded or rejected or approved. There is no purpose of bringing quests if we(admin) cannot review the submissions of the users and reward them. So, I picked this feature.
 
 
 ## My Work and How It works?
@@ -51,7 +51,7 @@ modifier withinTimeLimit(uint256 startTime, uint256 endTime) {
 }
 ```
 
-2. **Added a functionality to Review Quests** If the user submits the quest then the admin can review the submittion if it satifies the rquirement then mark the submition rewarded or if wrong answer then mark it as rejected and if the answer answer is correct and no rewards left then it is marked approved.
+2. **Added a functionality to Review Quests** If the user submits the quest then the admin can review the submission if it satifies the requirement then mark the submission rewarded or if wrong answer then mark it as rejected and if the answer is correct and no rewards left then it is marked approved.
 
 Added a new enum `QuestReviewStatus` to store the review status of the quests and added a mapping `questReviewStatuses` to store the review status of the quests.
 
@@ -97,7 +97,7 @@ function reviewQuest(
     }
 ```
 
-Modiers used in the Function Review Quest :
+Modifiers used in the Function Review Quest :
 
 ```
 // Check if the quest exist or not
@@ -163,9 +163,9 @@ Modiers used in the Function Review Quest :
   ![Join Quest](https://i.ibb.co/JHL7634/4.png "Join Created Quest")
   3. Checking Quest status after joining.
   ![Check Quest Status](https://i.ibb.co/47DXDF4/5.png "Check Quest Status")
-  4. Switching to the admin account and reviewing the quest submition of the user. It failed because the user an not yet submitted the quest.
+  4. Switching to the admin account and reviewing the quest submission of the user. It failed because the user an not yet submitted the quest.
   ![Quest Review Failed](https://i.ibb.co/QmgkYJB/6.png "Quest Review Failed")
   5. Switching to the user account and submitting the quest. And then observe the playerQuestStatus and questReviewStatus which are `2(Submitted)` and `0(Reviewing)`.
   ![Checking Quest Status](https://i.ibb.co/y6Px0hH/7.png "Checking Quest Status")
-  6. Switching to the admin account and reviewing the quest submition of the user. We mark the quest submition as rewarded and then observe the questReviewStatus and No of Rewards left in Quest which are `2(Rewarded)` and `9` since the user is rewarded so rewards left is decrease by 1.
+  6. Switching to the admin account and reviewing the quest submission of the user. We mark the quest submission as rewarded and then observe the questReviewStatus and No of Rewards left in Quest which are `2(Rewarded)` and `9` since the user is rewarded so rewards left is decrease by 1.
   ![Quest Review Success](https://i.ibb.co/VHgXkX8/8.png "Quest Review Success")
